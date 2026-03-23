@@ -27,15 +27,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-3">
-            {/* Logo matching admissions-tat-tekkzy.netlify.app */}
-            <svg width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="30" cy="30" r="28" stroke="#d6b3b3" strokeWidth="2"/>
-              <line x1="30" y1="14" x2="30" y2="46" stroke="#e63946" strokeWidth="2.5" strokeLinecap="round"/>
-              <polyline points="20,22 30,14 40,22" fill="none" stroke="#d6b3b3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <line x1="20" y1="22" x2="20" y2="30" stroke="#d6b3b3" strokeWidth="2" strokeLinecap="round"/>
-              <line x1="40" y1="22" x2="40" y2="30" stroke="#d6b3b3" strokeWidth="2" strokeLinecap="round"/>
-              <line x1="22" y1="42" x2="38" y2="42" stroke="#d6b3b3" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
+            {/* Actual TAT institutional logo from public/logo.png */}
+            <img src="/logo.png" alt="Trident Academy of Technology" className="w-12 h-12 object-contain" />
             <div>
               <h1 className="text-white font-serif font-bold text-lg leading-tight">Trident Academy of</h1>
               <h1 className="text-white font-serif font-bold text-lg leading-tight uppercase tracking-wider">Technology</h1>
