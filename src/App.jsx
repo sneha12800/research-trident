@@ -27,9 +27,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 overflow-hidden">
-               <img src="https://tat.ac.in/wp-content/uploads/2023/10/Group-18.png" className="w-full h-full object-contain" alt="Logo" />
-            </div>
+            {/* Logo matching admissions-tat-tekkzy.netlify.app */}
+            <svg width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="30" r="28" stroke="#d6b3b3" strokeWidth="2"/>
+              <line x1="30" y1="14" x2="30" y2="46" stroke="#e63946" strokeWidth="2.5" strokeLinecap="round"/>
+              <polyline points="20,22 30,14 40,22" fill="none" stroke="#d6b3b3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <line x1="20" y1="22" x2="20" y2="30" stroke="#d6b3b3" strokeWidth="2" strokeLinecap="round"/>
+              <line x1="40" y1="22" x2="40" y2="30" stroke="#d6b3b3" strokeWidth="2" strokeLinecap="round"/>
+              <line x1="22" y1="42" x2="38" y2="42" stroke="#d6b3b3" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
             <div>
               <h1 className="text-white font-serif font-bold text-lg leading-tight">Trident Academy of</h1>
               <h1 className="text-white font-serif font-bold text-lg leading-tight uppercase tracking-wider">Technology</h1>
@@ -114,7 +120,7 @@ const App = () => {
       <section className="relative h-[100vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000" 
+            src="https://images.unsplash.com/photo-1562774053-701939374585?w=2000&auto=format&fit=crop&q=80" 
             className="w-full h-full object-cover"
             alt="Library"
           />
@@ -132,9 +138,6 @@ const App = () => {
             <div className="flex flex-wrap gap-6">
               <button className="bg-[#d6b3b3] text-accent px-12 py-4 rounded-full font-bold text-sm tracking-widest hover:bg-opacity-90 transition-all uppercase">
                 EXPLORE RESEARCH
-              </button>
-              <button className="bg-transparent border-2 border-white/50 text-white px-10 py-4 rounded-full font-bold text-sm tracking-widest hover:bg-white/10 transition-all uppercase">
-                DOWNLOAD BROCHURE
               </button>
             </div>
           </div>
