@@ -36,13 +36,19 @@ const Navbar = () => {
           </div>
           
           <div className="hidden md:flex items-center gap-8">
-            {['Overview', 'Research', 'Programs', 'Admissions', 'Contact'].map((item) => (
+            {[
+              { name: 'Overview', href: 'https://trident-about-page.netlify.app/' },
+              { name: 'Research', href: '#research' },
+              { name: 'Programs', href: 'https://trident-academic.netlify.app/' },
+              { name: 'Admissions', href: 'https://admissions-tat-tekkzy.netlify.app/' },
+              { name: 'Contact', href: '#contact' }
+            ].map((link) => (
               <a 
-                key={item} 
-                href={`#${item.toLowerCase()}`} 
+                key={link.name} 
+                href={link.href} 
                 className="text-white hover:text-pop transition-all font-bold text-sm tracking-widest uppercase"
               >
-                {item}
+                {link.name}
               </a>
             ))}
             <button className="bg-pop text-white px-8 py-3 rounded-full text-xs font-bold hover:bg-opacity-90 transition-all shadow-lg">
@@ -67,14 +73,20 @@ const Navbar = () => {
             className="md:hidden bg-accent/95 backdrop-blur-xl border-b border-white/10 px-4 py-8"
           >
             <div className="flex flex-col gap-6 text-center">
-              {['Overview', 'Research', 'Programs', 'Admissions', 'Contact'].map((item) => (
+              {[
+                { name: 'Overview', href: 'https://trident-about-page.netlify.app/' },
+                { name: 'Research', href: '#research' },
+                { name: 'Programs', href: 'https://trident-academic.netlify.app/' },
+                { name: 'Admissions', href: 'https://admissions-tat-tekkzy.netlify.app/' },
+                { name: 'Contact', href: '#contact' }
+              ].map((link) => (
                 <a 
-                  key={item} 
-                  href={`#${item.toLowerCase()}`} 
+                  key={link.name} 
+                  href={link.href} 
                   className="text-white hover:text-pop font-bold text-lg tracking-widest uppercase"
                   onClick={() => setIsOpen(false)}
                 >
-                  {item}
+                  {link.name}
                 </a>
               ))}
               <button className="bg-pop text-white px-6 py-4 rounded-full text-sm font-bold mx-auto">
