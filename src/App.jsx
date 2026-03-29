@@ -66,7 +66,7 @@ const Navbar = () => {
                 <a 
                   key={link.name} 
                   href={link.href} 
-                  className={`${link.active ? 'text-primary' : 'text-slate-600 hover:text-primary'} transition-all font-sans font-medium text-[0.8rem] tracking-wider uppercase`}
+                  className={`${link.active ? 'text-primary' : 'text-slate-600 hover:text-primary'} transition-colors duration-200 font-sans font-medium text-[0.8rem] tracking-wider uppercase`}
                 >
                   {link.name}
                 </a>
@@ -74,7 +74,7 @@ const Navbar = () => {
             </div>
 
             <div className="hidden md:flex items-center">
-              <button className="bg-[#1a1a1a] text-white px-7 py-2.5 rounded-md text-[0.8rem] font-bold hover:bg-black transition-colors shadow-md uppercase tracking-wider">
+              <button className="bg-[#1a1a1a] text-white px-7 py-2.5 rounded-md text-[0.8rem] font-bold hover:bg-black transition-colors duration-200 shadow-md uppercase tracking-wider">
                 CONTACT US
               </button>
             </div>
@@ -95,7 +95,7 @@ const Navbar = () => {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-[0.65rem] font-bold tracking-[0.15em] text-slate-500 hover:text-primary uppercase border-b-2 border-transparent hover:border-primary transition-all pb-1 whitespace-nowrap"
+              className="text-[0.65rem] font-bold tracking-[0.15em] text-slate-500 hover:text-primary uppercase border-b-2 border-transparent hover:border-primary transition-colors duration-200 pb-1 whitespace-nowrap"
             >
               {link.name}
             </a>
@@ -109,6 +109,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="md:hidden bg-white border-b border-black/5 px-4 py-8 shadow-lg overflow-hidden absolute w-full z-50"
           >
             <div className="flex flex-col gap-6 text-center">
@@ -158,7 +159,7 @@ const App = () => {
     <div className="min-h-screen bg-white selection:bg-primary/20 text-text-dark font-sans">
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Hero Section — entrance animations only here */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#F5F5F7] pt-24 pb-16">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#EEF2FF] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
         
@@ -168,9 +169,9 @@ const App = () => {
             {/* Left Column: Content */}
             <div className="max-w-3xl">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white mb-8 shadow-sm"
               >
                 <Sparkles className="text-[#1d71b8]" size={16} />
@@ -178,39 +179,39 @@ const App = () => {
               </motion.div>
               
               <motion.h1 
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
                 className="text-4xl sm:text-5xl md:text-7xl lg:text-[5rem] text-[#1A1A1A] font-serif font-bold mb-6 tracking-tight leading-[1.1]"
               >
                 Research & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1d71b8] to-[#2D336B] italic pr-4">Innovation</span>
               </motion.h1>
               
               <motion.p 
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.6, delay: 0.28, ease: "easeOut" }}
                 className="text-lg md:text-xl text-slate-600 font-light max-w-xl leading-relaxed mb-10"
               >
                 A Vision of Research Excellence and Scholarly Pursuit. Our institution is dedicated to pioneering scientific advancement and solving complex global challenges.
               </motion.p>
               
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
                 className="flex flex-wrap gap-6 items-center"
               >
-                <button className="bg-[#2D336B] text-white px-10 py-5 rounded-full font-bold text-[11px] tracking-[0.2em] hover:bg-[#1a1e40] transition-colors uppercase shadow-xl shadow-[#2D336B]/20 flex items-center gap-2 group">
-                  Explore Research <ChevronRight className="group-hover:translate-x-1 transition-transform" size={16} />
+                <button className="bg-[#2D336B] text-white px-10 py-5 rounded-full font-bold text-[11px] tracking-[0.2em] hover:bg-[#1a1e40] transition-colors duration-200 uppercase shadow-xl shadow-[#2D336B]/20 flex items-center gap-2 group">
+                  Explore Research <ChevronRight className="group-hover:translate-x-1 transition-transform duration-200" size={16} />
                 </button>
               </motion.div>
 
               {/* Floating Stats */}
               <motion.div 
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 32 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.8 }}
+                transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}
                 className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-xl"
               >
                 {[
@@ -218,7 +219,7 @@ const App = () => {
                   { label: "Active Patents", val: "45+" },
                   { label: "Global Partners", val: "100+" }
                 ].map((stat, i) => (
-                  <div key={i} className="bg-white border border-slate-100 p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                  <div key={i} className="bg-white border border-slate-100 p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200">
                     <div className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A] mb-1">{stat.val}</div>
                     <div className="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">{stat.label}</div>
                   </div>
@@ -228,16 +229,16 @@ const App = () => {
 
             {/* Right Column: Featured Image Collage */}
             <motion.div 
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
               className="relative hidden lg:block h-[700px] w-full"
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-[2rem] overflow-hidden shadow-2xl border-[12px] border-white transform rotate-3 hover:rotate-0 transition-all duration-700 ease-out z-10 bg-slate-100">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-[2rem] overflow-hidden shadow-2xl border-[12px] border-white transform rotate-3 hover:rotate-0 transition-transform duration-700 ease-out z-10 bg-slate-100">
                 <img 
                   src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800" 
                   alt="Students researching" 
-                  className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-1000"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
@@ -265,47 +266,43 @@ const App = () => {
       </section>
 
       {/* Research Gallery Section */}
-      <section className="py-24 bg-[#2D336B] relative z-20 overflow-hidden">
+      <section className="py-14 bg-[#2D336B] relative z-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-20 relative z-10"
-          >
-            <h2 className="text-4xl font-serif font-bold text-white mb-6 uppercase tracking-[0.15em]">Gallery</h2>
-            <div className="h-1 w-24 bg-white/20 mx-auto rounded-full" />
-          </motion.div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {galleryImages.map((src, index) => (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                key={index} 
-                className={`relative overflow-hidden rounded-2xl md:rounded-[2rem] shadow-sm hover:shadow-xl group cursor-pointer border border-slate-100 ${
-                  index === 0 ? 'md:col-span-2 md:row-span-2 aspect-[4/3]' : 
-                  index === 3 ? 'md:col-span-2 aspect-[21/9]' : 
-                  'aspect-square'
-                }`}
-              >
-                <div className={`absolute inset-0 mix-blend-color opacity-10 group-hover:opacity-30 transition-opacity duration-500 z-10 pointer-events-none ${
-                    index % 3 === 0 ? 'bg-blue-600' : index % 3 === 1 ? 'bg-red-500' : 'bg-amber-400'
-                }`} />
-                <img 
-                  src={src} 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
-                  alt={`Research ${index + 1}`} 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 text-white z-20">
-                  <p className="font-serif font-bold text-2xl mb-1 drop-shadow-md">Observation {index + 1}</p>
-                  <p className="text-[10px] text-white/70 uppercase tracking-[0.2em] flex items-center gap-2">View Insight <ChevronRight size={12} /></p>
+          <div className="text-center mb-8 relative z-10">
+            <h2 className="text-3xl font-serif font-bold text-white mb-3 uppercase tracking-[0.15em]">Gallery</h2>
+            <div className="h-1 w-16 bg-white/20 mx-auto rounded-full" />
+          </div>
+
+          {/* Split layout: 1 big image left + 2×2 grid right */}
+          <div className="flex flex-col md:flex-row gap-3">
+
+            {/* Big image — left */}
+            <div className="relative overflow-hidden rounded-2xl group cursor-pointer md:w-1/2 aspect-[4/3]">
+              <img
+                src={galleryImages[0]}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                alt="Research 1"
+              />
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-250" />
+            </div>
+
+            {/* 2×2 grid — right */}
+            <div className="grid grid-cols-2 gap-3 md:w-1/2">
+              {galleryImages.slice(1, 5).map((src, i) => (
+                <div
+                  key={i}
+                  className="relative overflow-hidden rounded-xl group cursor-pointer aspect-[4/3]"
+                >
+                  <img
+                    src={src}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    alt={`Research ${i + 2}`}
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-250" />
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
@@ -314,14 +311,9 @@ const App = () => {
       <section id="vision" className="py-32 bg-[#FCF8F3] relative overflow-hidden border-y border-[#FCF8F3]/50">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-2 gap-12">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="bg-white rounded-[2.5rem] p-10 md:p-14 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-xl transition-all duration-500"
-            >
+            <div className="bg-white rounded-[2.5rem] p-10 md:p-14 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-lg transition-shadow duration-300">
               <div className="flex items-center gap-6 mb-10 relative z-10">
-                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 group-hover:border-[#00897B]/30 group-hover:bg-[#00897B]/5 transition-colors">
+                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 group-hover:border-[#00897B]/30 group-hover:bg-[#00897B]/5 transition-colors duration-300">
                   <Eye className="text-[#00897B]" size={32} strokeWidth={1.5} />
                 </div>
                 <h2 className="text-3xl font-serif font-bold tracking-[0.2em] text-secondary uppercase">Our Vision</h2>
@@ -329,16 +321,11 @@ const App = () => {
               <p className="text-[1.1rem] leading-relaxed text-slate-600 font-light relative z-10">
                 To establish an ecosystem of continuous learning and discovery that pioneers scientific advancement and reshapes the global technological landscape.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="bg-white rounded-[2.5rem] p-10 md:p-14 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-xl transition-all duration-500"
-            >
+            <div className="bg-white rounded-[2.5rem] p-10 md:p-14 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-lg transition-shadow duration-300">
               <div className="flex items-center gap-6 mb-10 relative z-10">
-                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 group-hover:border-blue-500/30 group-hover:bg-blue-500/5 transition-colors">
+                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 group-hover:border-blue-500/30 group-hover:bg-blue-500/5 transition-colors duration-300">
                   <Target className="text-blue-500" size={32} strokeWidth={1.5} />
                 </div>
                 <h2 className="text-3xl font-serif font-bold tracking-[0.2em] text-secondary uppercase">Our Mission</h2>
@@ -357,7 +344,7 @@ const App = () => {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -367,16 +354,11 @@ const App = () => {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#EEF2FF] rounded-full blur-[100px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-24"
-          >
+          <div className="text-center mb-24">
             <h2 className="text-sm font-bold text-slate-400 mb-4 uppercase tracking-[0.4em]">Ecosystem</h2>
             <h3 className="text-4xl md:text-5xl font-serif font-bold text-secondary uppercase tracking-[0.1em] mb-6">Funding & Hubs</h3>
             <div className="h-1 w-24 bg-slate-200 mx-auto rounded-full" />
-          </motion.div>
+          </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -384,31 +366,26 @@ const App = () => {
               { icon: Globe, title: "Domain Hubs", desc: "Specialized centers focusing on emergent global technologies.", color: "#e53b49", shadow: "rgba(229,59,73,0.15)", glow: "rgba(229,59,73,0.15)" },
               { icon: Users, title: "Consultancy", desc: "Providing expert solutions and industrial research consultancy.", color: "#f3842c", shadow: "rgba(243,132,44,0.15)", glow: "rgba(243,132,44,0.15)" }
             ].map((hub, index) => (
-              <motion.div 
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+              <div 
                 key={index}
-                className="bg-white px-8 py-14 rounded-[2rem] shadow-sm hover:shadow-[0_20px_40px_var(--tw-shadow-color)] transition-all duration-500 hover:-translate-y-2 group flex flex-col items-center text-center relative border-b-[4px]"
-                style={{ borderBottomColor: hub.color, "--tw-shadow-color": hub.shadow }}
+                className="bg-white px-8 py-14 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group flex flex-col items-center text-center relative border-b-[4px]"
+                style={{ borderBottomColor: hub.color }}
               >
                 <div 
-                  className="w-[88px] h-[88px] rounded-full flex items-center justify-center mb-8 bg-white transition-all duration-500 relative z-10 border border-slate-100 group-hover:scale-110" 
+                  className="w-[88px] h-[88px] rounded-full flex items-center justify-center mb-8 bg-white transition-colors duration-300 relative z-10 border border-slate-100" 
                   style={{ 
                     boxShadow: `0 0 40px ${hub.glow}, inset 0 0 20px ${hub.glow}` 
                   }}
                 >
-                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-500" style={{ backgroundColor: hub.color }} />
                   <hub.icon style={{ color: hub.color }} size={28} strokeWidth={1.5} />
                 </div>
                 <h3 className="text-xl font-serif font-bold text-[#1A1A1A] mb-4 tracking-wide relative z-10">{hub.title}</h3>
                 <p className="text-slate-500 text-[0.95rem] font-light leading-relaxed mb-10 relative z-10 px-2">{hub.desc}</p>
                 
-                <button className="mt-auto text-[0.8rem] font-bold uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all" style={{ color: hub.color }}>
+                <button className="mt-auto text-[0.8rem] font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all duration-200" style={{ color: hub.color }}>
                   DISCOVER <ChevronRight size={14} className="stroke-[2.5px]" />
                 </button>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -417,64 +394,53 @@ const App = () => {
       {/* Core Objectives Section */}
       <section id="objectives" className="py-32 bg-[#EEF2FF] relative z-20">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-24"
-          >
+          <div className="text-center mb-24">
             <h2 className="text-4xl font-serif font-bold text-secondary uppercase tracking-[0.2em] mb-6">Core Objectives</h2>
             <div className="h-1 w-24 bg-blue-200 mx-auto rounded-full" />
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 title: "Excellence in Research",
                 desc: "Achieve academic, industrial, and societal research excellence through innovation.",
-                color: "#f47b20",
-                gradient: "from-white to-[#FCF8F3]",
-                accent: "rgba(244,123,32,0.15)"
+                color: "#1d71b8",
+                gradient: "from-[#dbeafe] to-[#eff6ff]",
+                accent: "rgba(29,113,184,0.15)"
               },
               {
                 title: "Interdisciplinary Collaboration",
                 desc: "Promote cross-domain research and share knowledge via reputed journals and conferences.",
-                color: "#e04a2a",
-                gradient: "from-white to-[#FCF8F3]",
-                accent: "rgba(224,74,42,0.15)"
+                color: "#0f766e",
+                gradient: "from-[#ccfbf1] to-[#f0fdfa]",
+                accent: "rgba(15,118,110,0.15)"
               },
               {
                 title: "Sensitization Programs",
                 desc: "Organize seminars and workshops with guest experts to address societal and industrial needs.",
-                color: "#d32128",
-                gradient: "from-white to-[#FCF8F3]",
-                accent: "rgba(211,33,40,0.15)"
+                color: "#7c3aed",
+                gradient: "from-[#ede9fe] to-[#f5f3ff]",
+                accent: "rgba(124,58,237,0.15)"
               },
               {
                 title: "Industry Networking",
                 desc: "Conduct research through active collaboration and networking with industry partners.",
-                color: "#c2185b",
-                gradient: "from-white to-[#FCF8F3]",
-                accent: "rgba(194,24,91,0.15)"
+                color: "#be185d",
+                gradient: "from-[#fce7f3] to-[#fdf2f8]",
+                accent: "rgba(190,24,93,0.15)"
               }
             ].map((obj, index) => (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+              <div 
                 key={index}
-                className={`bg-gradient-to-br ${obj.gradient} p-10 rounded-[2.5rem] shadow-[0_10px_40px_rgba(45,51,107,0.05)] hover:shadow-[0_25px_50px_var(--tw-shadow-color)] transition-all duration-500 hover:-translate-y-2 border border-[#2D336B]/5 border-b-[6px] group relative overflow-hidden`}
-                style={{ borderBottomColor: obj.color, "--tw-shadow-color": obj.accent }}
+                className={`bg-gradient-to-br ${obj.gradient} p-10 rounded-[2.5rem] shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-[#2D336B]/5 border-b-[6px] group relative overflow-hidden`}
+                style={{ borderBottomColor: obj.color }}
               >
-                <div className="w-16 h-16 rounded-[1.5rem] bg-white shadow-sm flex items-center justify-center mb-10 border border-slate-100 group-hover:scale-110 transition-transform duration-500 relative z-10">
+                <div className="w-16 h-16 rounded-[1.5rem] bg-white shadow-sm flex items-center justify-center mb-10 border border-slate-100 relative z-10">
                   <span className="font-serif font-bold text-2xl" style={{ color: obj.color }}>{index + 1}</span>
                 </div>
                 <h3 className="text-xl font-serif font-bold text-secondary mb-4 pr-4 leading-snug relative z-10">{obj.title}</h3>
                 <p className="text-slate-600 leading-relaxed text-[0.95rem] font-light relative z-10">{obj.desc}</p>
-                
-                <div className="absolute top-0 right-0 w-32 h-32 blur-[50px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none rounded-full" style={{ backgroundColor: obj.color }} />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -485,55 +451,37 @@ const App = () => {
         <div className="absolute inset-0 opacity-[0.03] mix-blend-luminosity bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-fixed bg-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#F7B538] via-transparent to-[#F7B538]/80" />
         
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="relative z-10 max-w-5xl mx-auto px-4 text-center"
-        >
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
           <div className="text-secondary/10 text-9xl font-serif leading-none absolute -top-12 left-0 right-0 mx-auto select-none pointer-events-none self-center drop-shadow-sm">"</div>
           <h2 className="text-sm font-bold text-secondary/60 mb-12 uppercase tracking-[0.4em] relative z-10">Institutional Philosophy</h2>
           <p className="text-3xl md:text-5xl leading-tight font-serif text-secondary relative z-10">
             True academic excellence arises through <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D336B] to-slate-800 italic">interdisciplinary collaboration</span> and sustained intellectual rigor.
           </p>
-        </motion.div>
+        </div>
       </section>
 
       {/* Governance & Policies Section */}
       <section id="governance" className="py-32 bg-[#FCF8F3] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-5 gap-16 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className="lg:col-span-2"
-            >
+            <div className="lg:col-span-2">
               <h2 className="text-4xl font-serif font-bold text-secondary mb-6 uppercase tracking-[0.15em]">Governance & Policies</h2>
               <div className="h-1 w-24 bg-[#2D336B]/20 rounded-full mb-8" />
               <p className="text-slate-600 text-[1.05rem] mb-12 leading-relaxed font-light">
                 Our established framework ensures rigorous ethical standards, active linkage with industry, and robust systems fostering research empowerment across all departments.
               </p>
               <div className="space-y-5">
-                <button className="w-full bg-white border border-slate-200 text-secondary px-8 py-5 rounded-[1.5rem] font-bold text-[11px] tracking-[0.25em] transition-all hover:border-slate-300 hover:shadow-md uppercase shadow-sm flex items-center justify-between group">
-                  Research Committee <ChevronRight className="group-hover:translate-x-1 transition-transform text-slate-400" size={18} />
+                <button className="w-full bg-white border border-slate-200 text-secondary px-8 py-5 rounded-[1.5rem] font-bold text-[11px] tracking-[0.25em] transition-all duration-200 hover:border-slate-300 hover:shadow-md uppercase shadow-sm flex items-center justify-between group">
+                  Research Committee <ChevronRight className="group-hover:translate-x-1 transition-transform duration-200 text-slate-400" size={18} />
                 </button>
-                <button className="w-full bg-white text-secondary px-8 py-5 rounded-[1.5rem] font-bold text-[11px] tracking-[0.25em] transition-all hover:shadow-lg hover:-translate-y-1 uppercase flex items-center justify-between group border border-slate-200 shadow-sm hover:border-blue-500/30">
-                  Research Linkage <Zap className="text-blue-500 group-hover:scale-110 group-hover:text-amber-400 transition-all" size={18} />
+                <button className="w-full bg-white text-secondary px-8 py-5 rounded-[1.5rem] font-bold text-[11px] tracking-[0.25em] transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 uppercase flex items-center justify-between group border border-slate-200 shadow-sm hover:border-blue-500/30">
+                  Research Linkage <Zap className="text-blue-500 group-hover:text-amber-400 transition-colors duration-200" size={18} />
                 </button>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-3"
-            >
-              <div className="bg-white rounded-[2.5rem] p-8 sm:p-12 shadow-[0_15px_40px_rgba(45,51,107,0.05)] border border-[#2D336B]/5 relative overflow-hidden hover:shadow-xl transition-shadow duration-500 group/container">
+            <div className="lg:col-span-3">
+              <div className="bg-white rounded-[2.5rem] p-8 sm:p-12 shadow-sm border border-[#2D336B]/5 relative overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#F5F5F7] rounded-full blur-[80px]" />
                 <h3 className="text-2xl font-serif font-bold text-[#2D336B] mb-10 pb-6 border-b border-[#F5F5F7] tracking-[0.15em] relative z-10 flex items-center gap-4">
                   <div className="w-4 h-4 bg-[#F7B538] rounded-sm transform rotate-45 shadow-sm" />
@@ -546,19 +494,19 @@ const App = () => {
                     { title: "Research & Consultancy Policy 2013", desc: "Foundational rules and metrics governing industrial consultancy.", icon: Briefcase },
                     { title: "Research & Development Policy 2024", desc: "Updated mandates, ethical practices, and the R&D code of conduct.", icon: Mail }
                   ].map((policy, index) => (
-                    <div key={index} className="flex gap-6 items-start group cursor-pointer p-6 rounded-[1.5rem] bg-[#FCF8F3]/50 hover:bg-white border border-[#F5F5F7] hover:border-[#2D336B]/20 hover:shadow-lg transition-all duration-300">
-                      <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shrink-0 border border-[#2D336B]/10 group-hover:bg-[#2D336B] group-hover:border-[#2D336B] transition-all duration-300 shadow-sm">
-                        <policy.icon className="text-[#2D336B] group-hover:text-white transition-colors" size={22} strokeWidth={2} />
+                    <div key={index} className="flex gap-6 items-start group cursor-pointer p-6 rounded-[1.5rem] bg-[#FCF8F3]/50 hover:bg-white border border-[#F5F5F7] hover:border-[#2D336B]/20 hover:shadow-md transition-all duration-250">
+                      <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shrink-0 border border-[#2D336B]/10 group-hover:bg-[#2D336B] group-hover:border-[#2D336B] transition-all duration-250 shadow-sm">
+                        <policy.icon className="text-[#2D336B] group-hover:text-white transition-colors duration-250" size={22} strokeWidth={2} />
                       </div>
                       <div>
-                        <h4 className="text-[1.1rem] font-bold text-secondary group-hover:text-[#2D336B] transition-colors tracking-wide">{policy.title}</h4>
-                        <p className="text-[0.9rem] text-slate-500 font-medium mt-2 leading-relaxed group-hover:text-slate-600 transition-colors">{policy.desc}</p>
+                        <h4 className="text-[1.1rem] font-bold text-secondary group-hover:text-[#2D336B] transition-colors duration-200 tracking-wide">{policy.title}</h4>
+                        <p className="text-[0.9rem] text-slate-500 font-medium mt-2 leading-relaxed">{policy.desc}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -568,17 +516,12 @@ const App = () => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none opacity-40" />
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-20"
-          >
+          <div className="text-center mb-20">
             <h2 className="text-sm font-bold text-blue-100/60 mb-4 uppercase tracking-[0.3em] flex items-center justify-center gap-4">
               <span className="w-8 h-px bg-white/20" /> Aligning With <span className="w-8 h-px bg-white/20" />
             </h2>
             <h3 className="text-4xl font-serif font-bold text-white uppercase tracking-[0.1em] drop-shadow-sm">National Initiatives</h3>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -586,21 +529,17 @@ const App = () => {
               { icon: Cpu, title: "DIGITAL INDIA", desc: "Cyber-physical frameworks.", color: "#4F8AFF", rgb: "79,138,255" },
               { icon: Lightbulb, title: "STARTUP INDIA", desc: "Mentorship and funding.", color: "#fbbd18", rgb: "251,189,24" }
             ].map((item, index) => (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+              <div 
                 key={index} 
-                className="bg-white/10 backdrop-blur-md p-12 rounded-[2rem] text-center border border-white/10 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:bg-white/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] group relative overflow-hidden"
+                className="bg-white/10 backdrop-blur-md p-12 rounded-[2rem] text-center border border-white/10 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 group relative overflow-hidden"
               >
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none" style={{ backgroundColor: item.color }} />
-                <div className="w-20 h-20 rounded-[1.5rem] flex items-center justify-center mx-auto mb-8 border border-white/20 transition-all duration-500 shadow-sm group-hover:rotate-6 bg-white/5 group-hover:bg-white group-hover:shadow-md" style={{ "--tw-shadow-color": `rgba(${item.rgb}, 0.4)` }}>
-                  <item.icon className="transition-colors duration-500" style={{ color: item.color }} strokeWidth={1.5} size={32} />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-50 transition-opacity duration-400 pointer-events-none" style={{ backgroundColor: item.color }} />
+                <div className="w-20 h-20 rounded-[1.5rem] flex items-center justify-center mx-auto mb-8 border border-white/20 transition-all duration-300 shadow-sm bg-white/5 group-hover:bg-white group-hover:shadow-md">
+                  <item.icon className="transition-colors duration-300" style={{ color: item.color }} strokeWidth={1.5} size={32} />
                 </div>
-                <h3 className="font-serif font-bold text-xl mb-4 tracking-widest text-white transition-colors duration-500 drop-shadow-sm" style={{ color: item.color }}>{item.title}</h3>
+                <h3 className="font-serif font-bold text-xl mb-4 tracking-widest text-white drop-shadow-sm" style={{ color: item.color }}>{item.title}</h3>
                 <p className="text-blue-50 text-[0.95rem] font-light z-10 relative">{item.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -626,16 +565,16 @@ const App = () => {
           <div>
             <h4 className="text-white font-bold mb-6 text-[10px] uppercase tracking-[0.3em] h-12 flex items-center justify-center md:justify-start">Links</h4>
             <ul className="space-y-4 text-[0.9rem] font-light text-white/60">
-              <li className="hover:text-white cursor-pointer transition-colors block">About Us</li>
-              <li className="hover:text-white cursor-pointer transition-colors block">Academics</li>
-              <li className="hover:text-white cursor-pointer transition-colors block">Research</li>
+              <li className="hover:text-white cursor-pointer transition-colors duration-200 block">About Us</li>
+              <li className="hover:text-white cursor-pointer transition-colors duration-200 block">Academics</li>
+              <li className="hover:text-white cursor-pointer transition-colors duration-200 block">Research</li>
             </ul>
           </div>
           <div>
             <h4 className="text-white font-bold mb-6 text-[10px] uppercase tracking-[0.3em] h-12 flex items-center justify-center md:justify-start">Contact</h4>
             <div className="space-y-4">
-              <a href="mailto:info@tat.ac.in" className="block text-[0.9rem] font-bold text-white hover:text-white/80 transition-colors cursor-pointer">info@tat.ac.in</a>
-              <a href="tel:+916746649003" className="block text-[0.9rem] text-white/60 font-light hover:text-white transition-colors cursor-pointer">+91 674 6649003</a>
+              <a href="mailto:info@tat.ac.in" className="block text-[0.9rem] font-bold text-white hover:text-white/80 transition-colors duration-200 cursor-pointer">info@tat.ac.in</a>
+              <a href="tel:+916746649003" className="block text-[0.9rem] text-white/60 font-light hover:text-white transition-colors duration-200 cursor-pointer">+91 674 6649003</a>
             </div>
           </div>
           <div>
@@ -648,8 +587,8 @@ const App = () => {
             &copy; {new Date().getFullYear()} Trident Academy of Technology.
           </p>
           <div className="flex gap-6 text-[10px] uppercase tracking-widest font-medium text-white/30">
-            <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
-            <span className="hover:text-white cursor-pointer transition-colors">Terms of Service</span>
+            <span className="hover:text-white cursor-pointer transition-colors duration-200">Privacy Policy</span>
+            <span className="hover:text-white cursor-pointer transition-colors duration-200">Terms of Service</span>
           </div>
         </div>
       </footer>
