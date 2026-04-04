@@ -27,60 +27,74 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const navLinks = [
-    { name: 'About', href: 'https://trident-about-page.netlify.app/', active: false },
-    { name: 'Admissions', href: 'https://admissions-tat-tekkzy.netlify.app/', active: false },
-    { name: 'Academics', href: 'https://trident-academic.netlify.app/', active: false },
-    { name: 'Research', href: '#', active: true },
-    { name: 'Campus Life', href: '#', active: false },
-    { name: 'Activities', href: '#', active: false },
-  ];
-
-  const secondaryLinks = [
-    { name: 'OBJECTIVES', href: '#objectives' },
-    { name: 'RECOGNITIONS', href: '#recognitions' },
-    { name: 'FUNDING & HUBS', href: '#funding-hubs' },
-    { name: 'GOVERNANCE', href: '#governance' },
-    { name: 'INITIATIVES', href: '#initiatives' },
+    { name: 'ABOUT', href: 'https://trident-about-page.netlify.app/' },
+    { name: 'ADMISSIONS', href: 'https://admissions-tat-tekkzy.netlify.app/' },
+    { name: 'ACADEMICS', href: 'https://trident-academic.netlify.app/' },
+    { name: 'RESEARCH', href: '#' },
+    { name: 'CAMPUS LIFE', href: '#' },
+    { name: 'ACTIVITIES', href: '#' },
+    { name: 'CONTACT US', href: '#' },
   ];
 
   return (
-    <div className="sticky top-0 left-0 right-0 z-50">
-      {/* Primary Top Navbar */}
-      <nav className="bg-white/95 backdrop-blur-md shadow-sm relative z-20">
+    <div className="fixed top-0 left-0 right-0 z-50">
+      {/* Top Dark Bar */}
+      <div className="bg-[#1B3168] py-2 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex gap-4 md:gap-8">
+            <span className="text-white/90 text-[10px] font-bold tracking-widest uppercase">AFFILIATED TO BPUT</span>
+            <span className="text-white/40 hidden md:inline">|</span>
+            <span className="text-white/90 text-[10px] font-bold tracking-widest uppercase">NAAC 'A' ACCREDITED</span>
+          </div>
+          <div className="flex items-center gap-2 group cursor-pointer">
+            <Users size={12} className="text-white/80 group-hover:text-white transition-colors" />
+            <span className="text-white/90 text-[10px] font-bold tracking-widest uppercase group-hover:text-white transition-colors">ALUMNI</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navigation Bar */}
+      <nav className="bg-white/95 backdrop-blur-md shadow-sm border-b border-black/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center gap-3">
-              <img 
-                src="/logo.png" 
-                alt="Trident Logo" 
-                className="w-12 h-12 object-contain shrink-0" 
-                onError={(e) => { e.target.onerror = null; e.target.src = 'https://tat.ac.in/wp-content/uploads/2023/12/logo-1.png'; }}
-              />
-              <div className="flex flex-col justify-center">
-                <h1 className="text-secondary font-serif font-bold text-xl leading-none tracking-tight">TRIDENT</h1>
+            {/* Logo Section */}
+            <div className="flex items-center gap-4 cursor-pointer group">
+              <div className="relative shrink-0">
+                <img 
+                  src="/logo.png" 
+                  alt="Trident Academy" 
+                  className="w-14 h-14 object-contain group-hover:scale-105 transition-transform duration-300" 
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[#1B3168] font-serif font-black text-2xl leading-[1.1] tracking-tight">TRIDENT</span>
+                <span className="text-[#1B3168] font-sans font-bold text-[9px] sm:text-[10px] tracking-[0.2em] mt-0.5 opacity-100 uppercase">ACADEMY OF TECHNOLOGY</span>
               </div>
             </div>
             
-            <div className="hidden md:flex flex-1 justify-center items-center gap-8">
+            {/* Desktop Navigation Links */}
+            <div className="hidden lg:flex flex-1 justify-center items-center gap-6 xl:gap-8">
               {navLinks.map((link) => (
                 <a 
                   key={link.name} 
                   href={link.href} 
-                  className={`${link.active ? 'text-primary' : 'text-slate-600 hover:text-primary'} transition-colors duration-200 font-sans font-medium text-[0.8rem] tracking-wider uppercase`}
+                  className="text-slate-700 hover:text-[#1B3168] transition-all duration-200 font-sans font-bold text-[11px] tracking-widest uppercase relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-[#1B3168] hover:after:w-full after:transition-all after:duration-300"
                 >
                   {link.name}
                 </a>
               ))}
             </div>
 
-            <div className="hidden md:flex items-center">
-              <button className="bg-[#1a1a1a] text-white px-7 py-2.5 rounded-md text-[0.8rem] font-bold hover:bg-black transition-colors duration-200 shadow-md uppercase tracking-wider">
-                CONTACT US
+            {/* Action Button */}
+            <div className="hidden lg:flex items-center">
+              <button className="bg-[#1B3168] text-white px-8 py-3 rounded text-[11px] font-black hover:bg-[#141E3C] transition-all duration-300 shadow-md uppercase tracking-[0.2em] transform hover:-translate-y-0.5 active:translate-y-0">
+                APPLY NOW
               </button>
             </div>
 
-            <div className="md:hidden">
-              <button onClick={() => setIsOpen(!isOpen)} className="text-secondary p-2">
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden flex items-center gap-4">
+              <button onClick={() => setIsOpen(!isOpen)} className="text-[#1B3168] p-2 hover:bg-[#1B3168]/5 rounded-full transition-colors">
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
@@ -88,55 +102,37 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Secondary Navbar (Title Contents) */}
-      <div className="hidden md:block bg-[#f8f9fa] border-t border-b border-black/5 shadow-sm relative z-10">
-        <div className="max-w-7xl mx-auto px-4 flex justify-center gap-12 py-3 overflow-x-auto hide-scrollbar">
-          {secondaryLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="text-[0.65rem] font-bold tracking-[0.15em] text-slate-500 hover:text-primary uppercase border-b-2 border-transparent hover:border-primary transition-colors duration-200 pb-1 whitespace-nowrap"
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
-      </div>
-
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden bg-white border-b border-black/5 px-4 py-8 shadow-lg overflow-hidden absolute w-full z-50"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="lg:hidden fixed inset-0 top-[112px] bg-white z-[60] overflow-y-auto"
           >
-            <div className="flex flex-col gap-6 text-center">
-              {navLinks.map((link) => (
-                <a 
+            <div className="flex flex-col p-8 gap-8 text-center bg-white min-h-screen">
+              {navLinks.map((link, idx) => (
+                <motion.a 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * idx }}
                   key={link.name} 
                   href={link.href} 
-                  className={`${link.active ? 'text-primary' : 'text-slate-600 hover:text-primary'} font-sans font-medium text-[0.85rem] tracking-[1px] uppercase`}
+                  className="text-slate-800 hover:text-[#1B3168] font-sans font-black text-lg tracking-[0.1em] uppercase border-b border-black/5 pb-4"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
-                </a>
+                </motion.a>
               ))}
-              <div className="h-px w-full bg-black/5 my-2" />
-              {secondaryLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
-                  className="text-primary/70 font-bold text-[0.75rem] tracking-widest uppercase"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <button className="bg-[#1a1a1a] text-white px-6 py-3 rounded-md text-[0.85rem] font-bold mx-auto transition-colors hover:bg-black uppercase tracking-wider w-full mt-4">
-                CONTACT US
-              </button>
+              <motion.button 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4 }}
+                className="bg-[#1B3168] text-white px-8 py-5 rounded-lg text-sm font-black transition-all hover:bg-[#141E3C] uppercase tracking-[0.3em] w-full mt-4 shadow-xl"
+              >
+                APPLY NOW
+              </motion.button>
             </div>
           </motion.div>
         )}
@@ -160,7 +156,7 @@ const App = () => {
       <Navbar />
 
       {/* Hero Section — entrance animations only here */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#F5F5F7] pt-24 pb-16">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#F5F5F7] pt-32 pb-16">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#EEF2FF] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -349,54 +345,28 @@ const App = () => {
         </div>
       </section>
 
-      {/* Research Funding & Hubs Section */}
-      <section id="funding-hubs" className="py-32 bg-[#F5F5F7] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#EEF2FF] rounded-full blur-[100px] pointer-events-none" />
+      {/* Philosophy Section - MOVED UP */}
+      <section id="philosophy" className="py-40 bg-[#F7B538] relative overflow-hidden flex items-center justify-center border-t border-[#FCF8F3]/20 shadow-[0_-20px_50px_rgba(247,181,56,0.2)]">
+        <div className="absolute inset-0 opacity-[0.03] mix-blend-luminosity bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-fixed bg-center" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#F7B538] via-transparent to-[#F7B538]/80" />
         
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-24">
-            <h2 className="text-sm font-bold text-slate-400 mb-4 uppercase tracking-[0.4em]">Ecosystem</h2>
-            <h3 className="text-4xl md:text-5xl font-serif font-bold text-secondary uppercase tracking-[0.1em] mb-6">Funding & Hubs</h3>
-            <div className="h-1 w-24 bg-slate-200 mx-auto rounded-full" />
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: Database, title: "Funding Schemes", desc: "Backed by prestigious TEFR, TIFR, and AICTE Research Incentive Schemes.", color: "#2b73b5", shadow: "rgba(43,115,181,0.15)", glow: "rgba(43,115,181,0.15)" },
-              { icon: Globe, title: "Domain Hubs", desc: "Specialized centers focusing on emergent global technologies.", color: "#e53b49", shadow: "rgba(229,59,73,0.15)", glow: "rgba(229,59,73,0.15)" },
-              { icon: Users, title: "Consultancy", desc: "Providing expert solutions and industrial research consultancy.", color: "#f3842c", shadow: "rgba(243,132,44,0.15)", glow: "rgba(243,132,44,0.15)" }
-            ].map((hub, index) => (
-              <div 
-                key={index}
-                className="bg-white px-8 py-14 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group flex flex-col items-center text-center relative border-b-[4px]"
-                style={{ borderBottomColor: hub.color }}
-              >
-                <div 
-                  className="w-[88px] h-[88px] rounded-full flex items-center justify-center mb-8 bg-white transition-colors duration-300 relative z-10 border border-slate-100" 
-                  style={{ 
-                    boxShadow: `0 0 40px ${hub.glow}, inset 0 0 20px ${hub.glow}` 
-                  }}
-                >
-                  <hub.icon style={{ color: hub.color }} size={28} strokeWidth={1.5} />
-                </div>
-                <h3 className="text-xl font-serif font-bold text-[#1A1A1A] mb-4 tracking-wide relative z-10">{hub.title}</h3>
-                <p className="text-slate-500 text-[0.95rem] font-light leading-relaxed mb-10 relative z-10 px-2">{hub.desc}</p>
-                
-                <button className="mt-auto text-[0.8rem] font-bold uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all duration-200" style={{ color: hub.color }}>
-                  DISCOVER <ChevronRight size={14} className="stroke-[2.5px]" />
-                </button>
-              </div>
-            ))}
-          </div>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+          <div className="text-black/5 text-9xl font-serif leading-none absolute -top-12 left-0 right-0 mx-auto select-none pointer-events-none self-center drop-shadow-sm">"</div>
+          <h2 className="text-sm font-black text-slate-900 mb-12 uppercase tracking-[0.5em] relative z-10">Institutional <span className="text-[#006837] italic font-serif lowercase tracking-normal">philosophy</span></h2>
+          <p className="text-4xl md:text-6xl leading-tight font-serif font-black text-[#1A1A1A] relative z-10">
+            True academic excellence arises through <span className="text-[#006837] italic font-medium">interdisciplinary collaboration</span> and sustained intellectual rigor.
+          </p>
         </div>
       </section>
 
-      {/* Core Objectives Section */}
+      {/* Core Objectives Section - MOVED DOWN */}
       <section id="objectives" className="py-32 bg-[#EEF2FF] relative z-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-24">
-            <h2 className="text-4xl font-serif font-bold text-secondary uppercase tracking-[0.2em] mb-6">Core Objectives</h2>
-            <div className="h-1 w-24 bg-blue-200 mx-auto rounded-full" />
+            <h2 className="text-5xl md:text-6xl font-serif font-black text-secondary uppercase tracking-[0.1em] mb-6 leading-tight">
+              Core <span className="text-emerald-600 italic font-medium lowercase">Objectives</span>
+            </h2>
+            <div className="h-1.5 w-32 bg-emerald-600/20 mx-auto rounded-full" />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -411,9 +381,9 @@ const App = () => {
               {
                 title: "Interdisciplinary Collaboration",
                 desc: "Promote cross-domain research and share knowledge via reputed journals and conferences.",
-                color: "#0f766e",
+                color: "#059669",
                 gradient: "from-[#ccfbf1] to-[#f0fdfa]",
-                accent: "rgba(15,118,110,0.15)"
+                accent: "rgba(5,150,105,0.15)"
               },
               {
                 title: "Sensitization Programs",
@@ -436,27 +406,13 @@ const App = () => {
                 style={{ borderBottomColor: obj.color }}
               >
                 <div className="w-16 h-16 rounded-[1.5rem] bg-white shadow-sm flex items-center justify-center mb-10 border border-slate-100 relative z-10">
-                  <span className="font-serif font-bold text-2xl" style={{ color: obj.color }}>{index + 1}</span>
+                  <span className="font-serif font-black text-3xl" style={{ color: obj.color }}>{index + 1}</span>
                 </div>
-                <h3 className="text-xl font-serif font-bold text-secondary mb-4 pr-4 leading-snug relative z-10">{obj.title}</h3>
-                <p className="text-slate-600 leading-relaxed text-[0.95rem] font-light relative z-10">{obj.desc}</p>
+                <h3 className="text-2xl font-serif font-black text-secondary mb-4 pr-4 leading-snug relative z-10">{obj.title}</h3>
+                <p className="text-slate-700 leading-relaxed text-[1rem] font-bold opacity-80 relative z-10">{obj.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Philosophy Section */}
-      <section className="py-40 bg-[#F7B538] relative overflow-hidden flex items-center justify-center border-t border-[#FCF8F3]/20 shadow-[0_-20px_50px_rgba(247,181,56,0.2)]">
-        <div className="absolute inset-0 opacity-[0.03] mix-blend-luminosity bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-fixed bg-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F7B538] via-transparent to-[#F7B538]/80" />
-        
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-          <div className="text-secondary/10 text-9xl font-serif leading-none absolute -top-12 left-0 right-0 mx-auto select-none pointer-events-none self-center drop-shadow-sm">"</div>
-          <h2 className="text-sm font-bold text-secondary/60 mb-12 uppercase tracking-[0.4em] relative z-10">Institutional Philosophy</h2>
-          <p className="text-3xl md:text-5xl leading-tight font-serif text-secondary relative z-10">
-            True academic excellence arises through <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D336B] to-slate-800 italic">interdisciplinary collaboration</span> and sustained intellectual rigor.
-          </p>
         </div>
       </section>
 
@@ -517,28 +473,47 @@ const App = () => {
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-sm font-bold text-blue-100/60 mb-4 uppercase tracking-[0.3em] flex items-center justify-center gap-4">
-              <span className="w-8 h-px bg-white/20" /> Aligning With <span className="w-8 h-px bg-white/20" />
+            <h2 className="text-sm font-black text-blue-100/60 mb-4 uppercase tracking-[0.4em] flex items-center justify-center gap-4">
+              <span className="w-8 h-px bg-white/20" /> Aligning <span className="text-white italic">With</span> <span className="w-8 h-px bg-white/20" />
             </h2>
-            <h3 className="text-4xl font-serif font-bold text-white uppercase tracking-[0.1em] drop-shadow-sm">National Initiatives</h3>
+            <h3 className="text-5xl md:text-6xl font-serif font-black text-white uppercase tracking-[0.1em] drop-shadow-sm">
+              National <span className="text-amber-400 italic font-medium lowercase">Initiatives</span>
+            </h3>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: Building2, title: "SMART CITIES", desc: "Urban infrastructure models.", color: "#d32128", rgb: "211,33,40" },
-              { icon: Cpu, title: "DIGITAL INDIA", desc: "Cyber-physical frameworks.", color: "#4F8AFF", rgb: "79,138,255" },
-              { icon: Lightbulb, title: "STARTUP INDIA", desc: "Mentorship and funding.", color: "#fbbd18", rgb: "251,189,24" }
+              { 
+                img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=800", 
+                title: "SMART CITIES", 
+                desc: "Developing next-generation urban infrastructure models for a sustainable tomorrow.", 
+                color: "#d32128" 
+              },
+              { 
+                img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800", 
+                title: "DIGITAL INDIA", 
+                desc: "Pioneering state-of-the-all cyber-physical frameworks for a connected nation.", 
+                color: "#4F8AFF" 
+              },
+              { 
+                img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800", 
+                title: "STARTUP INDIA", 
+                desc: "Fostering entrepreneurial excellence through robust mentorship and venture funding.", 
+                color: "#fbbd18" 
+              }
             ].map((item, index) => (
               <div 
                 key={index} 
-                className="bg-white/10 backdrop-blur-md p-12 rounded-[2rem] text-center border border-white/10 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/15 group relative overflow-hidden"
+                className="bg-[#1A1E40] rounded-[2.5rem] text-center border border-white/10 shadow-lg transition-all duration-300 hover:-translate-y-2 group relative overflow-hidden"
               >
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-50 transition-opacity duration-400 pointer-events-none" style={{ backgroundColor: item.color }} />
-                <div className="w-20 h-20 rounded-[1.5rem] flex items-center justify-center mx-auto mb-8 border border-white/20 transition-all duration-300 shadow-sm bg-white/5 group-hover:bg-white group-hover:shadow-md">
-                  <item.icon className="transition-colors duration-300" style={{ color: item.color }} strokeWidth={1.5} size={32} />
+                <div className="h-56 relative overflow-hidden">
+                  <img src={item.img} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt={item.title} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1E40] to-transparent opacity-60" />
                 </div>
-                <h3 className="font-serif font-bold text-xl mb-4 tracking-widest text-white drop-shadow-sm" style={{ color: item.color }}>{item.title}</h3>
-                <p className="text-blue-50 text-[0.95rem] font-light z-10 relative">{item.desc}</p>
+                <div className="p-10 relative z-10">
+                  <h3 className="font-serif font-black text-2xl mb-4 tracking-widest text-white" style={{ color: item.color }}>{item.title}</h3>
+                  <p className="text-blue-50 text-[1rem] font-bold opacity-80">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>

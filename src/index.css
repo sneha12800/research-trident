@@ -3,17 +3,39 @@
 @tailwind utilities;
 
 :root {
-  background-color: #fdfaf6;
-  color: #2c1e16;
+  background-color: #ffffff;
+  color: #1A1A1A;
+  --primary-navy: #1B3168; 
+  --dark-navy: #141E3C;    
+  --accent-gold: #F7B538;
+  --accent-azure: #0077b6;
+  --accent-emerald: #059669;
 }
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
+  color: #1A1A1A;
 }
 
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
+}
+
+.title-accent {
+  @apply font-serif italic text-[var(--accent-azure)];
+}
+
+.bold-title {
+  @apply font-serif font-black uppercase tracking-[0.1em];
+}
+
+.nav-link {
+  @apply text-[#1A1A1A] hover:text-[#1B3168] transition-colors duration-200 font-sans font-semibold text-[0.75rem] tracking-widest uppercase px-1;
+}
+
+.top-bar-text {
+  @apply text-white/90 text-[0.65rem] font-bold tracking-widest uppercase;
 }
 
 .hero-gradient {
