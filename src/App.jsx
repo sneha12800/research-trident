@@ -22,6 +22,8 @@ import {
   Globe,
   Users
 } from 'lucide-react';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -153,7 +155,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-white selection:bg-primary/20 text-text-dark font-sans">
-      <Navbar />
+      <Header />
 
       {/* Hero Section — entrance animations only here */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#F5F5F7] pt-32 pb-16">
@@ -521,52 +523,7 @@ const App = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1A1A1A] text-white py-24 pb-12 border-t border-white/5 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent -translate-x-1/2 opacity-30" />
-        
-        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-12 text-center md:text-left relative z-10">
-          <div>
-            <div className="flex items-center gap-4 justify-center md:justify-start h-12 mb-6">
-              <img 
-                src="/logo.png" 
-                alt="Trident Logo" 
-                className="w-12 h-12 object-contain shrink-0" 
-                onError={(e) => { e.target.onerror = null; e.target.src = 'https://tat.ac.in/wp-content/uploads/2023/12/logo-1.png'; }}
-              />
-              <h3 className="font-serif font-bold text-2xl tracking-[0.2em] pt-1">TRIDENT</h3>
-            </div>
-            <p className="text-white/60 text-[0.9rem] font-light leading-relaxed pr-6">Innovation in Education. Excellence in Research. Forging the future through cutting-edge discovery.</p>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 text-[10px] uppercase tracking-[0.3em] h-12 flex items-center justify-center md:justify-start">Links</h4>
-            <ul className="space-y-4 text-[0.9rem] font-light text-white/60">
-              <li className="hover:text-white cursor-pointer transition-colors duration-200 block">About Us</li>
-              <li className="hover:text-white cursor-pointer transition-colors duration-200 block">Academics</li>
-              <li className="hover:text-white cursor-pointer transition-colors duration-200 block">Research</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 text-[10px] uppercase tracking-[0.3em] h-12 flex items-center justify-center md:justify-start">Contact</h4>
-            <div className="space-y-4">
-              <a href="mailto:info@tat.ac.in" className="block text-[0.9rem] font-bold text-white hover:text-white/80 transition-colors duration-200 cursor-pointer">info@tat.ac.in</a>
-              <a href="tel:+916746649003" className="block text-[0.9rem] text-white/60 font-light hover:text-white transition-colors duration-200 cursor-pointer">+91 674 6649003</a>
-            </div>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 text-[10px] uppercase tracking-[0.3em] h-12 flex items-center justify-center md:justify-start">Address</h4>
-            <p className="text-[0.9rem] text-white/60 font-light leading-relaxed">Infocity, Chandaka Industrial Estate,<br />Bhubaneswar, Odisha 751024</p>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 mt-20 pt-8 border-t border-white/5 text-center flex flex-col md:flex-row justify-between items-center gap-4 relative z-10">
-          <p className="text-[10px] uppercase tracking-widest font-medium text-white/30">
-            &copy; {new Date().getFullYear()} Trident Academy of Technology.
-          </p>
-          <div className="flex gap-6 text-[10px] uppercase tracking-widest font-medium text-white/30">
-            <span className="hover:text-white cursor-pointer transition-colors duration-200">Privacy Policy</span>
-            <span className="hover:text-white cursor-pointer transition-colors duration-200">Terms of Service</span>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
