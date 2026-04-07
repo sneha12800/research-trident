@@ -44,8 +44,15 @@ export default function Header() {
           <nav className="hidden lg:block">
             <ul className="flex items-center gap-6">
               {NAV_LINKS.map(item => (
-                <li key={item.label}>
-                  <a href={item.href} className="nav-link text-[14px] uppercase tracking-[0.14em] cursor-pointer whitespace-nowrap font-extrabold text-[#3E3A36] hover:text-primary transition-colors">
+                <li key={item.label} className="relative">
+                  <a 
+                    href={item.href} 
+                    className={`nav-link text-[14px] uppercase tracking-[0.14em] cursor-pointer whitespace-nowrap transition-all duration-300 ${
+                      item.label === 'RESEARCH' 
+                        ? "font-black text-primary border-b-[2.5px] border-primary pb-[1px]" 
+                        : "font-extrabold text-[#3E3A36] hover:text-primary opacity-80 hover:opacity-100"
+                    }`}
+                  >
                     {item.label}
                   </a>
                 </li>
@@ -55,7 +62,7 @@ export default function Header() {
 
           {/* CTA Elements */}
           <div className="hidden lg:flex items-center gap-5">
-            <a href="/apply" className="btn-rose text-[12px] font-bold px-7 py-3 rounded uppercase whitespace-nowrap bg-rose-600 text-white hover:bg-rose-700">Apply Now</a>
+            <a href="https://apply-now.tekkzy.com/" className="btn-rose text-[12px] font-bold px-7 py-3 rounded uppercase whitespace-nowrap bg-rose-600 text-white hover:bg-rose-700">Apply Now</a>
           </div>
 
           {/* Mobile Toggle */}
@@ -80,7 +87,9 @@ export default function Header() {
                 key={item.label} 
                 href={item.href} 
                 onClick={() => setMobileOpen(false)}
-                className={`block py-3.5 text-[15px] font-extrabold text-[#3E3A36] uppercase tracking-[0.14em] hover:text-primary hover:bg-soft/50 rounded-lg px-3 transition-all duration-500 transform ${
+                className={`block py-3.5 text-[15px] uppercase tracking-[0.14em] hover:text-primary hover:bg-soft/50 rounded-lg px-3 transition-all duration-500 transform ${
+                  item.label === 'RESEARCH' ? "font-black text-primary bg-soft/30" : "font-extrabold text-[#3E3A36]"
+                } ${
                   mobileOpen ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
                 }`}
                 style={{ 
@@ -97,7 +106,7 @@ export default function Header() {
               }`} 
               style={{ transitionDelay: `${mobileOpen ? NAV_LINKS.length * 40 + 150 : 0}ms` }}
             >
-              <a href="/apply" className="btn-rose block text-center text-[13px] tracking-widest font-extrabold px-6 py-4 rounded-xl shadow-[0_10px_30px_-10px_rgba(230,57,70,0.5)] bg-rose-600 text-white">
+              <a href="https://apply-now.tekkzy.com/" className="btn-rose block text-center text-[13px] tracking-widest font-extrabold px-6 py-4 rounded-xl shadow-[0_10px_30px_-10px_rgba(230,57,70,0.5)] bg-rose-600 text-white">
                 START APPLICATION
               </a>
             </div>

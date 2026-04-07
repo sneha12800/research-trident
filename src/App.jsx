@@ -29,13 +29,13 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const navLinks = [
-    { name: 'ABOUT', href: 'https://trident-about-page.netlify.app/' },
-    { name: 'ADMISSIONS', href: 'https://admissions-tat-tekkzy.netlify.app/' },
-    { name: 'ACADEMICS', href: 'https://trident-academic.netlify.app/' },
-    { name: 'RESEARCH', href: '#' },
-    { name: 'CAMPUS LIFE', href: '#' },
-    { name: 'ACTIVITIES', href: '#' },
-    { name: 'CONTACT US', href: '#' },
+    { name: 'ABOUT', href: 'https://about-tat.tekkzy.com/' },
+    { name: 'ADMISSIONS', href: 'https://admissions-tat.tekkzy.com/' },
+    { name: 'ACADEMICS', href: 'https://academics-tat.tekkzy.com/' },
+    { name: 'RESEARCH', href: 'https://research-tat.tekkzy.com/' },
+    { name: 'CAMPUS LIFE', href: 'https://campuslife-tat.tekkzy.com/' },
+    { name: 'ACTIVITIES', href: 'https://activities-tat.tekkzy.com/' },
+    { name: 'CONTACT US', href: 'https://contactus-tat.tekkzy.com/' },
   ];
 
   return (
@@ -159,7 +159,10 @@ const App = () => {
 
       {/* Hero Section — entrance animations only here */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#F5F5F7] pt-32 pb-16">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#EEF2FF] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+        {/* Animated Background Elements */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#EEF2FF] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none animate-blob" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#FDF8EE] rounded-full blur-[120px] translate-y-1/2 -translate-x-1/4 pointer-events-none animate-blob animation-delay-2000" />
+        <div className="absolute inset-0 blueprint-grid opacity-30 pointer-events-none" />
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -200,9 +203,9 @@ const App = () => {
                 transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
                 className="flex flex-wrap gap-6 items-center"
               >
-                <button className="bg-[#2D336B] text-white px-10 py-5 rounded-full font-bold text-[11px] tracking-[0.2em] hover:bg-[#1a1e40] transition-colors duration-200 uppercase shadow-xl shadow-[#2D336B]/20 flex items-center gap-2 group">
+                <a href="https://research-tat.tekkzy.com/" className="bg-[#2D336B] text-white px-10 py-5 rounded-full font-bold text-[11px] tracking-[0.2em] hover:bg-[#1a1e40] transition-colors duration-200 uppercase shadow-xl shadow-[#2D336B]/20 flex items-center gap-2 group">
                   Explore Research <ChevronRight className="group-hover:translate-x-1 transition-transform duration-200" size={16} />
-                </button>
+                </a>
               </motion.div>
 
               {/* Floating Stats */}
@@ -307,6 +310,9 @@ const App = () => {
 
       {/* Vision & Mission Section */}
       <section id="vision" className="py-32 bg-[#FCF8F3] relative overflow-hidden border-y border-[#FCF8F3]/50">
+        <div className="absolute inset-0 bg-grid-slate-100 opacity-40 pointer-events-none" />
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none animate-blob" />
+        
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="bg-white rounded-[2.5rem] p-10 md:p-14 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-lg transition-shadow duration-300">
@@ -472,6 +478,17 @@ const App = () => {
       {/* National Initiatives Section */}
       <section id="initiatives" className="py-32 bg-[#2D336B] relative overflow-hidden shadow-[inset_0_20px_50px_rgba(0,0,0,0.1)]">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none opacity-40" />
+        
+        {/* Floating Thematic Watermarks */}
+        <div className="absolute top-20 left-10 text-white/5 pointer-events-none rotate-12">
+          <Cpu size={200} strokeWidth={0.5} />
+        </div>
+        <div className="absolute bottom-20 right-10 text-white/5 pointer-events-none -rotate-12">
+          <Database size={240} strokeWidth={0.5} />
+        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/[0.02] pointer-events-none">
+          <Globe size={500} strokeWidth={0.5} />
+        </div>
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-20">
