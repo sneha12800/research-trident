@@ -7,3 +7,6 @@ export const NAV_LINKS = [
   { label: 'ACTIVITIES', href: 'https://activities-tat.tekkzy.com/' },
   { label: 'CONTACT US', href: 'https://contactus-tat.tekkzy.com/' },
 ];
+
+export const APPLY_NOW_LINK = "https://apply-now.tekkzy.com/";
+

@@ -24,19 +24,12 @@ import {
 } from 'lucide-react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { NAV_LINKS, APPLY_NOW_LINK } from './data/constants';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const navLinks = [
-    { name: 'ABOUT', href: 'https://about-tat.tekkzy.com/' },
-    { name: 'ADMISSIONS', href: 'https://admissions-tat.tekkzy.com/' },
-    { name: 'ACADEMICS', href: 'https://academics-tat.tekkzy.com/' },
-    { name: 'RESEARCH', href: 'https://research-tat.tekkzy.com/' },
-    { name: 'CAMPUS LIFE', href: 'https://campuslife-tat.tekkzy.com/' },
-    { name: 'ACTIVITIES', href: 'https://activities-tat.tekkzy.com/' },
-    { name: 'CONTACT US', href: 'https://contactus-tat.tekkzy.com/' },
-  ];
+  const navLinks = NAV_LINKS;
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -78,20 +71,20 @@ const Navbar = () => {
             <div className="hidden lg:flex flex-1 justify-center items-center gap-6 xl:gap-8">
               {navLinks.map((link) => (
                 <a 
-                  key={link.name} 
+                  key={link.label} 
                   href={link.href} 
                   className="text-slate-700 hover:text-[#1B3168] transition-all duration-200 font-sans font-bold text-[11px] tracking-widest uppercase relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-[#1B3168] hover:after:w-full after:transition-all after:duration-300"
                 >
-                  {link.name}
+                  {link.label}
                 </a>
               ))}
             </div>
 
             {/* Action Button */}
             <div className="hidden lg:flex items-center">
-              <button className="bg-[#1B3168] text-white px-8 py-3 rounded text-[11px] font-black hover:bg-[#141E3C] transition-all duration-300 shadow-md uppercase tracking-[0.2em] transform hover:-translate-y-0.5 active:translate-y-0">
+              <a href={APPLY_NOW_LINK} className="bg-[#1B3168] text-white px-8 py-3 rounded text-[11px] font-black hover:bg-[#141E3C] transition-all duration-300 shadow-md uppercase tracking-[0.2em] transform hover:-translate-y-0.5 active:translate-y-0">
                 APPLY NOW
-              </button>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -119,22 +112,23 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 * idx }}
-                  key={link.name} 
+                  key={link.label} 
                   href={link.href} 
                   className="text-slate-800 hover:text-[#1B3168] font-sans font-black text-lg tracking-[0.1em] uppercase border-b border-black/5 pb-4"
                   onClick={() => setIsOpen(false)}
                 >
-                  {link.name}
+                  {link.label}
                 </motion.a>
               ))}
-              <motion.button 
+              <motion.a 
+                href={APPLY_NOW_LINK}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4 }}
-                className="bg-[#1B3168] text-white px-8 py-5 rounded-lg text-sm font-black transition-all hover:bg-[#141E3C] uppercase tracking-[0.3em] w-full mt-4 shadow-xl"
+                className="bg-[#1B3168] text-white px-8 py-5 rounded-lg text-sm font-black transition-all hover:bg-[#141E3C] uppercase tracking-[0.3em] text-center w-full mt-4 shadow-xl"
               >
                 APPLY NOW
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
         )}
