@@ -151,12 +151,25 @@ const App = () => {
     <div className="min-h-screen bg-white selection:bg-primary/20 text-text-dark font-sans">
       <Header />
 
-      {/* Hero Section — entrance animations only here */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#F5F5F7] pt-32 pb-16">
-        {/* Animated Background Elements */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#EEF2FF] rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none animate-blob" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#FDF8EE] rounded-full blur-[120px] translate-y-1/2 -translate-x-1/4 pointer-events-none animate-blob animation-delay-2000" />
-        <div className="absolute inset-0 blueprint-grid opacity-30 pointer-events-none" />
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-32 pb-16">
+        
+        {/* Full Background (Cinematic Pan Simulation) */}
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-[#0a0f1c]">
+          {/* 
+            Note: Free stock video URLs (Mixkit/Coverr) blocked hotlinking (HTTP 403) recently. 
+            This Unsplash image with a slow CSS pan perfectly simulates a cinematic drone video 
+            without ever breaking. If you prefer a real video, simply change this <img> 
+            back to a <video> pointing to a local .mp4 file in your public directory.
+          */}
+          <img 
+            src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=2500" 
+            alt="Laboratory Environment"
+            className="w-full h-full object-cover origin-center animate-[pan_30s_ease-in-out_infinite_alternate] opacity-40 mix-blend-screen"
+          />
+          {/* Cinematic Dark Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-[#0F172A]/80 to-transparent" />
+        </div>
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -167,26 +180,26 @@ const App = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white mb-8 shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md mb-8 shadow-sm"
               >
-                <Sparkles className="text-[#1d71b8]" size={16} />
-                <span className="text-slate-600 text-[11px] font-bold uppercase tracking-widest">Pioneering Global Discovery</span>
+                <Sparkles className="text-amber-400" size={16} />
+                <span className="text-white/90 text-[11px] font-bold uppercase tracking-widest">Pioneering Global Discovery</span>
               </motion.div>
               
               <motion.h1 
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-                className="text-4xl sm:text-5xl md:text-7xl lg:text-[5rem] text-[#1A1A1A] font-serif font-bold mb-6 tracking-tight leading-[1.1]"
+                className="text-4xl sm:text-5xl md:text-7xl lg:text-[5rem] text-white font-serif font-bold mb-6 tracking-tight leading-[1.1]"
               >
-                Research & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1d71b8] to-[#2D336B] italic pr-4">Innovation</span>
+                Research & <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200 italic pr-4">Innovation</span>
               </motion.h1>
               
               <motion.p 
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.28, ease: "easeOut" }}
-                className="text-lg md:text-xl text-slate-600 font-light max-w-xl leading-relaxed mb-10"
+                className="text-lg md:text-xl text-slate-300 font-light max-w-xl leading-relaxed mb-10"
               >
                 A Vision of Research Excellence and Scholarly Pursuit. Our institution is dedicated to pioneering scientific advancement and solving complex global challenges.
               </motion.p>
@@ -197,7 +210,7 @@ const App = () => {
                 transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
                 className="flex flex-wrap gap-6 items-center"
               >
-                <a href="https://research-tat.tekkzy.com/" className="bg-[#2D336B] text-white px-10 py-5 rounded-full font-bold text-[11px] tracking-[0.2em] hover:bg-[#1a1e40] transition-colors duration-200 uppercase shadow-xl shadow-[#2D336B]/20 flex items-center gap-2 group">
+                <a href="https://research-tat.tekkzy.com/" className="bg-amber-400 text-slate-900 px-10 py-5 rounded-full font-bold text-[11px] tracking-[0.2em] hover:bg-white transition-colors duration-200 uppercase shadow-xl shadow-amber-400/20 flex items-center gap-2 group">
                   Explore Research <ChevronRight className="group-hover:translate-x-1 transition-transform duration-200" size={16} />
                 </a>
               </motion.div>
@@ -214,46 +227,32 @@ const App = () => {
                   { label: "Active Patents", val: "45+" },
                   { label: "Global Partners", val: "100+" }
                 ].map((stat, i) => (
-                  <div key={i} className="bg-white border border-slate-100 p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                    <div className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A] mb-1">{stat.val}</div>
-                    <div className="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">{stat.label}</div>
+                  <div key={i} className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 sm:p-5 rounded-2xl shadow-sm hover:bg-white/10 transition-colors duration-200">
+                    <div className="text-2xl sm:text-3xl font-serif font-bold text-white mb-1">{stat.val}</div>
+                    <div className="text-[9px] sm:text-[10px] text-amber-400/80 font-bold uppercase tracking-[0.2em]">{stat.label}</div>
                   </div>
                 ))}
               </motion.div>
             </div>
 
-            {/* Right Column: Featured Image Collage */}
+            {/* Right Column: Static Image Layout over Video */}
             <motion.div 
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-              className="relative hidden lg:block h-[700px] w-full"
+              className="relative hidden lg:block h-[600px] w-full"
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[85%] rounded-[2rem] overflow-hidden shadow-2xl border-[12px] border-white transform rotate-3 hover:rotate-0 transition-transform duration-700 ease-out z-10 bg-slate-100">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] h-[85%] rounded-[2rem] overflow-hidden shadow-2xl border-[4px] border-white/20 transform rotate-2 hover:rotate-0 transition-transform duration-700 ease-out z-10">
                 <img 
-                  src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800" 
-                  alt="Students researching" 
+                  src="/lab_scientist_static.png" 
+                  alt="Scientist working" 
                   className="w-full h-full object-cover"
                 />
               </div>
 
-              <div className="absolute top-10 right-4 w-48 h-48 rounded-[2rem] overflow-hidden shadow-xl border-[8px] border-white transform -rotate-6 z-20">
-                <img 
-                  src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=400" 
-                  alt="Microscope" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="absolute bottom-16 left-0 w-56 h-40 rounded-[2rem] overflow-hidden shadow-xl border-[8px] border-white transform rotate-[-8deg] z-20">
-                <img 
-                  src="https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=400" 
-                  alt="Data Analysis" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
-              <div className="absolute top-1/4 left-10 w-20 h-20 bg-[#F7B538] rounded-full blur-[40px] opacity-60 z-0" />
+              {/* Decorative Elements */}
+              <div className="absolute top-1/4 -right-10 w-32 h-32 bg-amber-400 rounded-full blur-[80px] opacity-20 z-0 pointer-events-none" />
+              <div className="absolute bottom-1/4 left-10 w-40 h-40 bg-blue-500 rounded-full blur-[80px] opacity-20 z-0 pointer-events-none" />
             </motion.div>
 
           </div>
