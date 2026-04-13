@@ -20,12 +20,32 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={cn(
-      "fixed top-0 left-0 w-full z-[100] transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-[#253386]/5",
-      isScrolled ? "py-3" : "py-4"
-    )}>
-      <nav className="w-full px-6 lg:px-16">
-        <div className="flex justify-between items-center w-full">
+    <header className="fixed top-0 left-0 w-full z-[100] transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-[#253386]/5">
+      {/* Top Global Bar */}
+      <div className={cn(
+        "bg-[#253386] text-white px-4 md:px-8 transition-all duration-500 overflow-hidden",
+        isScrolled ? "max-h-0 py-0 opacity-0" : "max-h-20 py-2 opacity-100"
+      )}>
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-[10px] md:text-xs font-bold tracking-wider">
+          <div className="flex gap-4 md:gap-8 uppercase">
+            <span className="opacity-90">Affiliated to BPUT</span>
+            <span className="hidden md:inline-block h-3.5 w-[1px] bg-white/20"></span>
+            <span className="opacity-90">NAAC 'A' Accredited</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="https://alumni-tat.tekkzy.com/" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-graduation-cap"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              ALUMNI
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <nav className={cn(
+        "max-w-7xl mx-auto px-4 md:px-8 transition-all duration-300",
+        isScrolled ? "py-2" : "py-4"
+      )}>
+        <div className="flex justify-between items-center">
           
           {/* Branding / Logo Lockup */}
           <a href="https://tat.tekkzy.com/" className="flex items-center gap-3.5 group cursor-pointer shrink-0">
@@ -41,7 +61,7 @@ export default function Header() {
           </a>
 
           {/* Desktop Navigation Menu */}
-          <div className="hidden lg:flex flex-1 justify-center items-center gap-6 xl:gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {NAV_LINKS.map(item => (
               <a 
                 key={item.label}
