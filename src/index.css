@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 :root {
-  background-color: #ffffff;
-  color: #1A1A1A;
+  --primary-rose: #2C3A8C;
+  --secondary-beige: #A59381;
+  --bg-light: #EFE7DF;
+  --bg-soft: #F5EEEC;
+  --text-dark: #3E3A36;
   --primary-navy: #1B3168; 
   --dark-navy: #141E3C;    
   --accent-gold: #F7B538;
@@ -14,29 +17,62 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: #1A1A1A;
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
 }
 
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
 }
 
-.title-accent {
-  @apply font-serif italic text-[var(--accent-azure)];
+p {
+  font-size: 19px;
+  line-height: 1.75;
+  font-weight: 500;
 }
 
-.bold-title {
-  @apply font-serif font-black uppercase tracking-[0.1em];
-}
+/* Utility classes */
+.bg-primary { background-color: var(--primary-rose) !important; color: white; }
+.bg-secondary { background-color: var(--secondary-beige) !important; color: white; }
+.bg-soft { background-color: var(--bg-soft) !important; }
+.text-primary { color: var(--primary-rose) !important; }
+.text-secondary { color: var(--secondary-beige) !important; }
+.border-primary { border-color: var(--primary-rose) !important; }
 
+/* Navbar Links */
 .nav-link {
-  @apply text-[#1A1A1A] hover:text-[#1B3168] transition-colors duration-200 font-sans font-semibold text-[0.75rem] tracking-widest uppercase px-1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  padding-bottom: 4px;
+  position: relative;
 }
-
-.top-bar-text {
-  @apply text-white/90 text-[0.65rem] font-bold tracking-widest uppercase;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-rose);
+  transition: width 0.3s ease;
 }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link.active, .nav-link:hover { color: var(--primary-rose) !important; }
 
 .hero-gradient {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));

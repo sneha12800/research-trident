@@ -15,42 +15,43 @@ export default function Header() {
 
   return (
     <div className="fixed top-0 left-0 w-full z-50">
-      {/* Utility Bar */}
-      <div className={"hidden lg:block bg-[#8B6E66] transition-all duration-500 " + (scrolled ? "max-h-0 overflow-hidden py-0" : "max-h-20 py-3")}>
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12 flex justify-between items-center text-white">
-          <div className="text-[10px] font-black tracking-[.35em] uppercase flex items-center gap-4">
-            <span className="opacity-70">AFFILIATED TO BPUT</span>
-            <div className="w-1 h-1 rounded-full bg-white opacity-40"></div>
-            <span className="opacity-70">NAAC 'A' ACCREDITED</span>
-          </div>
-          <div className="flex text-[10px] font-black uppercase tracking-[.3em]">
-            <a href="https://alumni-tat.tekkzy.com/" className="flex items-center gap-2 hover:text-white/80 transition-colors">
-               ALUMNI PORTAL
+      {/* Slim Utility Bar */}
+      <div className={"hidden lg:block border-b border-white/5 transition-all duration-500 " + (scrolled ? "max-h-0 overflow-hidden py-0 border-b-0" : "max-h-20 py-1.5")} style={{ background: 'linear-gradient(135deg, #1a2660 0%, #2C3A8C 60%, #3a4aad 100%)' }}>
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12 flex items-center justify-between">
+          <span className="text-[10px] font-semibold text-white/50 uppercase tracking-[0.2em]">
+            Approved by AICTE &nbsp;|&nbsp; Affiliated to BPUT &nbsp;|&nbsp; NAAC Accredited &nbsp;|&nbsp; NBA Accredited for 6 Programmes
+          </span>
+          <div className="flex items-center gap-3">
+            {/* Alumni Portal */}
+            <a href="#" className="flex items-center gap-1.5 text-[10px] font-bold text-[#E8BD63] uppercase tracking-widest hover:text-[#F0D080] transition-colors whitespace-nowrap">
+              <Users size={11}/> Alumni
             </a>
           </div>
         </div>
       </div>
 
-      <header className={"relative transition-all duration-500 bg-white " + (scrolled ? "shadow-[0_4px_30px_-10px_rgba(0,0,0,0.1)] py-4" : "py-7")}>
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12 flex items-center justify-between">
+      <header 
+        className={"relative transition-all duration-500 bg-white " + (scrolled ? "shadow-[0_4px_20px_-4px_rgba(15,23,42,0.12)] py-3" : "py-5")}
+      >
+        <div className="mx-auto px-6 xl:px-12 flex items-center justify-between">
             
           {/* Logo Lockup */}
-          <a href="https://tat.tekkzy.com/" className="flex items-center gap-5 group cursor-pointer">
-            <img src={logo} alt="TAT Logo" className="w-[55px] h-[55px] md:w-[65px] md:h-[65px] object-contain flex-shrink-0 drop-shadow-sm" />
-            <div className="hidden sm:flex flex-col justify-center border-l border-[#8B6E66]/20 pl-5">
-              <div className="font-serif text-[26px] md:text-[30px] text-[#212529] leading-none tracking-tight font-black uppercase">Trident</div>
-              <div className="text-[10px] font-black text-[#8B6E66] tracking-[.35em] uppercase mt-2">Academy of Technology</div>
+          <a href="https://tat.tekkzy.com/" className="flex items-center gap-3.5 group cursor-pointer no-underline">
+            <img src={logo} alt="TAT Logo" className="w-12 h-12 md:w-[52px] md:h-[52px] object-contain flex-shrink-0 drop-shadow-sm" />
+            <div className="hidden sm:flex flex-col justify-center">
+              <div className="serif text-[22px] md:text-[24px] font-black leading-none tracking-[0.04em] uppercase text-[#3E3A36]">Trident</div>
+              <div className="w-full h-[1px] my-[3px] bg-gradient-to-r from-[#1B4D8E] to-transparent"></div>
+              <div className="text-[9px] md:text-[10px] font-semibold tracking-[0.22em] uppercase leading-none text-[#1B4D8E]">Academy of Technology</div>
             </div>
           </a>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:block">
-            <ul className="flex items-center gap-10">
+            <ul className="flex items-center gap-6 list-none m-0 p-0">
               {NAV_LINKS.map(item => (
                 <li key={item.label}>
-                  <a href={item.href} className="nav-link text-[12px] uppercase tracking-[0.2em] cursor-pointer whitespace-nowrap font-black text-[#495057] hover:text-[#8B6E66] transition-colors relative group">
+                  <a href={item.href} className={`nav-link text-[14px] uppercase tracking-[0.14em] cursor-pointer whitespace-nowrap font-extrabold transition-colors duration-500 no-underline hover:text-[#1B4D8E] ${item.label === 'RESEARCH' ? 'active text-[#1B4D8E]' : 'text-[#3E3A36]'}`}>
                     {item.label}
-                    <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#8B6E66] transition-all duration-300 group-hover:w-full"></span>
                   </a>
                 </li>
               ))}
@@ -58,15 +59,13 @@ export default function Header() {
           </nav>
 
           {/* CTA Elements */}
-          <div className="hidden lg:flex items-center">
-            <a href="https://admissions-tat.tekkzy.com" className="bg-[#212529] hover:bg-[#8B6E66] text-white text-[12px] font-black px-10 py-4 rounded-xl uppercase tracking-[.2em] shadow-xl transition-all hover:-translate-y-1">
-              Apply Now
-            </a>
+          <div className="hidden lg:flex items-center gap-5">
+            <a href="https://apply-now.tekkzy.com" className="text-[12px] font-bold px-7 py-3 rounded uppercase whitespace-nowrap no-underline transition-all duration-500 hover:opacity-90" style={{ backgroundColor: '#D3494B', color: '#ffffff' }}>Apply Now</a>
           </div>
 
           {/* Mobile Toggle */}
           <button 
-            className="lg:hidden text-[#8B6E66] p-2 bg-[#F5EEEC] rounded-lg hover:bg-[#8B6E66]/10 transition-colors active:scale-95 z-50 relative" 
+            className="lg:hidden p-2 rounded-lg transition-colors active:scale-95 z-50 relative text-[#2C3A8C] bg-[#F5EEEC] hover:bg-[#2C3A8C]/10"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle Menu"
           >
@@ -74,9 +73,8 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <div 
-          className={`lg:hidden absolute top-full left-0 w-full bg-white shadow-[0_30px_60px_-15px_rgba(62,58,54,0.2)] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] origin-top overflow-hidden border-t border-[#8B6E66]/10 ${
+          className={`lg:hidden absolute top-full left-0 w-full bg-white shadow-[0_30px_60px_-15px_rgba(15,23,42,0.2)] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] origin-top overflow-hidden border-t border-[#2C3A8C]/10 ${
             mobileOpen ? "max-h-[85vh] opacity-100 py-6" : "max-h-0 opacity-0 py-0 pointer-events-none"
           }`}
         >
@@ -86,12 +84,12 @@ export default function Header() {
                 key={item.label} 
                 href={item.href} 
                 onClick={() => setMobileOpen(false)}
-                className={`block py-3.5 text-[14px] font-bold text-[#3E3A36] uppercase tracking-[0.14em] hover:text-[#8B6E66] hover:bg-[#F5EEEC]/50 rounded-lg px-3 transition-all duration-500 transform ${
+                className={`block py-3.5 text-[15px] font-extrabold text-[#3E3A36] uppercase tracking-[0.14em] hover:text-[#2C3A8C] hover:bg-[#F5EEEC]/50 rounded-lg px-3 transition-all duration-500 transform no-underline ${
                   mobileOpen ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
                 }`}
                 style={{ 
                   transitionDelay: `${mobileOpen ? i * 40 + 100 : 0}ms`, 
-                  borderBottom: i !== NAV_LINKS.length - 1 ? "1px solid rgba(139,110,102,0.1)" : "none" 
+                  borderBottom: i !== NAV_LINKS.length - 1 ? "1px solid rgba(27,77,142,0.1)" : "none" 
                 }}
               >
                 {item.label}
@@ -103,8 +101,8 @@ export default function Header() {
               }`} 
               style={{ transitionDelay: `${mobileOpen ? NAV_LINKS.length * 40 + 150 : 0}ms` }}
             >
-              <a href="https://admissions-tat.tekkzy.com" className="bg-[#8B6E66] text-white block text-center text-[13px] tracking-widest font-bold px-6 py-4 rounded-xl shadow-[0_10px_30px_-10px_rgba(139,110,102,0.5)] uppercase">
-                Apply Now
+              <a onClick={() => setMobileOpen(false)} href="https://apply-now.tekkzy.com" className="block text-center text-[13px] tracking-widest text-[#fff] font-extrabold px-6 py-4 rounded-xl shadow-lg transition-opacity hover:opacity-90 no-underline" style={{ backgroundColor: '#D3494B' }}>
+                START APPLICATION
               </a>
             </div>
           </div>
